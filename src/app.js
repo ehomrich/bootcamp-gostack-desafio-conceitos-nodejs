@@ -59,10 +59,9 @@ app.delete('/repositories/:id', validateProjectId, (request, response) => {
     return response.status(404).json({ error: "Repository not found." });
   }
 
-  const repository = repositories[index];
   repositories.splice(index, 1);
 
-  return response.json(repository);
+  return response.status(204).send();
 });
 
 app.post('/repositories/:id/like', validateProjectId, (request, response) => {
